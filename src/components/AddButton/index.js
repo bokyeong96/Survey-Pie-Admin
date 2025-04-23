@@ -1,12 +1,32 @@
 import { PlusCircleOutlined } from '@ant-design/icons';
+import { Button, Popover } from 'antd';
+import { useState } from 'react';
 import styled from 'styled-components';
 
-function AddButton({ onClick }) {
+function AddButton({ addQuestion }) {
+  const [open, setOpen] = useState(false);
+
+  const handleOpenChange = (newOpen) => {
+    setOpen(newOpen);
+  };
   return (
     <AddButtonwrapper>
-      <IconButton onClick={onClick}>
-        <PlusCircleOutlined />
-      </IconButton>
+      <Popover
+        content={
+          <div>
+            <Button onClick={addQuestion}>객관식</Button>
+            <Button onClick={addQuestion}>단답식</Button>
+            <Button onClick={addQuestion}>서술식</Button>
+          </div>
+        }
+        trigger="click"
+        open={open}
+        onOpenChange={handleOpenChange}
+      >
+        <IconButton>
+          <PlusCircleOutlined />
+        </IconButton>
+      </Popover>
     </AddButtonwrapper>
   );
 }
