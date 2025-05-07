@@ -9,16 +9,47 @@ function AddButton({ addQuestion }) {
   const handleOpenChange = (newOpen) => {
     setOpen(newOpen);
   };
+  const hide = () => {
+    setOpen(false);
+  };
   return (
     <AddButtonwrapper>
       <Popover
         content={
           <div>
-            <Button onClick={addQuestion}>객관식</Button>
-            <Button onClick={addQuestion}>단답식</Button>
-            <Button onClick={addQuestion}>서술식</Button>
+            <Button
+              type="text"
+              onClick={() => {
+                hide();
+                addQuestion('select');
+              }}
+              style={{ display: 'block' }}
+            >
+              객관식
+            </Button>
+            <Button
+              type="text"
+              onClick={() => {
+                hide();
+                addQuestion('text');
+              }}
+              style={{ display: 'block' }}
+            >
+              단답식
+            </Button>
+            <Button
+              type="text"
+              onClick={() => {
+                hide();
+                addQuestion('textarea');
+              }}
+              style={{ display: 'block' }}
+            >
+              서술식
+            </Button>
           </div>
         }
+        placement="right"
         trigger="click"
         open={open}
         onOpenChange={handleOpenChange}
