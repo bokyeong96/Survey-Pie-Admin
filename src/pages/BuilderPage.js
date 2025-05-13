@@ -1,4 +1,4 @@
-import { Col, Input, Row } from 'antd';
+import { Col, Row } from 'antd';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
@@ -8,13 +8,6 @@ import OptionSection from '../components/OptionSection';
 import PreviewSection from '../components/PreviewSection';
 import MainLayout from '../layouts/MainLayOut';
 import fetchSurvey from '../services/fetchSurvey';
-import {
-  addQuestion,
-  deleteQuestion,
-  moveDownQuestion,
-  moveUpQuestion,
-  setTitle,
-} from '../stores/survey/surveySlice';
 
 function BuilderPage() {
   const error = useSelector((state) => state.survey.error);
@@ -35,9 +28,9 @@ function BuilderPage() {
   }
 
   return (
-    <MainLayout selectedKeys={['builder']}>
-      <Row>
-        <Col flex="auto">
+    <MainLayout selectedKeys={['builder']} padding={0}>
+      <Row style={{ height: '100%' }}>
+        <Col flex="auto" style={{ padding: 30 }}>
           <BuilderTitleInput />
           <PreviewSection />
         </Col>
