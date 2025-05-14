@@ -14,6 +14,6 @@ export const selectedQuestionIdSlice = createSlice({
   },
 });
 
-export const { setSelectQuestionId } = selectedQuestionIdSlice.actions;
+export const { setSelectedQuestionId } = selectedQuestionIdSlice.actions;
 
 export default selectedQuestionIdSlice.reducer;
